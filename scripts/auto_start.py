@@ -249,7 +249,7 @@ def run_supervised(args):
         else:
             rapid_failures = 0
         if rapid_failures >= 3:
-            log("ERROR", "Backend crashed repeatedly on startup. Giving up — check the logs above.")
+            log("ERROR", "Backend crashed repeatedly on startup. Giving up - check the logs above.")
             return returncode
 
         backoff = min(2 ** rapid_failures, 10)
@@ -279,7 +279,7 @@ def main(argv=None):
 
     # Already running? Don't start a duplicate.
     if is_port_open(args.host, args.port):
-        log("OK", f"Backend already running on http://{args.host}:{args.port} — not starting another.")
+        log("OK", f"Backend already running on http://{args.host}:{args.port} - not starting another.")
         if not args.prod and not args.no_browser:
             probe = "127.0.0.1" if args.host in ("0.0.0.0", "") else args.host
             webbrowser.open(f"http://{probe}:{args.port}/docs")
