@@ -2,8 +2,8 @@
 
 One batched, low-cost classification call per group of uncategorized videos:
 all titles go into a single request and Claude returns a JSON array mapping
-each video_id to one fixed-taxonomy category. Uses Haiku 4.5 — cheapest model,
-well-suited to short-title classification.
+each video_id to one fixed-taxonomy category. Uses Opus 4.8 — Anthropic's most
+capable model, for the highest-quality category assignments.
 """
 
 import json
@@ -11,8 +11,8 @@ import os
 
 import anthropic
 
-# claude-haiku-4-5: fastest / cheapest, ideal for high-volume title classification.
-MODEL = "claude-haiku-4-5"
+# claude-opus-4-8: Anthropic's most capable model, for best categorization quality.
+MODEL = "claude-opus-4-8"
 
 # Fixed taxonomy. Claude must pick exactly one of these per video; anything it
 # returns outside the list is coerced to "Other".
@@ -90,7 +90,7 @@ def categorize_videos(videos: list[dict]) -> dict[str, str]:
     )
 
     # Small JSON output; scale a little with batch size. No thinking/effort —
-    # this is a quick classification, and effort would error on Haiku.
+    # this is a quick classification that doesn't need extended reasoning.
     max_tokens = min(4096, 256 + len(videos) * 48)
     message = _get_client().messages.create(
         model=MODEL,

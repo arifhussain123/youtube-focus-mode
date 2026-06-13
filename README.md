@@ -87,7 +87,7 @@ Either way, visit `http://localhost:8000/docs` for the Swagger UI. Endpoints:
 
 ### AI video categorization (Claude)
 
-The Stats tab's **By category** section shows time-per-topic. Categories are assigned by Claude (**Haiku 4.5**) via the Anthropic SDK:
+The Stats tab's **By category** section shows time-per-topic. Categories are assigned by Claude (**Opus 4.8**) via the Anthropic SDK:
 
 - Set an API key before starting the server: copy `backend/.env.example` to `.env` and fill `ANTHROPIC_API_KEY`, or `export ANTHROPIC_API_KEY=...` in your shell.
 - In the popup's Stats tab, click **Categorize** — it POSTs to `/api/categorize`, which sends the titles of so-far-uncategorized videos to Claude in one batched call and stores the results in the `video_categories` table.
