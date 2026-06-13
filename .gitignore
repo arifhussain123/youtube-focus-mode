@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+
+# Backend (Python)
+backend/.venv/
+backend/__pycache__/
+backend/app/__pycache__/
+backend/focus.db

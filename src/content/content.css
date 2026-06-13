@@ -1,0 +1,43 @@
+/*
+ * YouTube Focus Mode — distraction hide rules.
+ *
+ * Every rule is gated on a class set on <html> by content.js. When the class
+ * is absent the section is left untouched. YouTube's DOM/class names drift
+ * over time, so these selectors are the main maintenance surface — verify
+ * against the live site if a section stops hiding.
+ */
+
+/* --- Recommendations sidebar (watch page related videos) --- */
+html.yfm-hide-recommendations ytd-watch-flexy #secondary,
+html.yfm-hide-recommendations ytd-watch-flexy #related,
+html.yfm-hide-recommendations #secondary.ytd-watch-flexy {
+  display: none !important;
+}
+
+/* --- Homepage feed --- */
+html.yfm-hide-home ytd-browse[page-subtype="home"] #contents,
+html.yfm-hide-home ytd-browse[page-subtype="home"] ytd-rich-grid-renderer {
+  display: none !important;
+}
+
+/* --- Shorts (shelves + reels + nav entry) --- */
+html.yfm-hide-shorts ytd-reel-shelf-renderer,
+html.yfm-hide-shorts ytd-rich-shelf-renderer[is-shorts],
+html.yfm-hide-shorts ytd-rich-section-renderer:has([is-shorts]),
+html.yfm-hide-shorts ytd-guide-entry-renderer:has(a[title="Shorts"]),
+html.yfm-hide-shorts ytd-mini-guide-entry-renderer[aria-label="Shorts"],
+html.yfm-hide-shorts a[title="Shorts"] {
+  display: none !important;
+}
+
+/* --- Comments --- */
+html.yfm-hide-comments #comments,
+html.yfm-hide-comments ytd-comments {
+  display: none !important;
+}
+
+/* --- End-screen suggestions (cards shown at end of playback) --- */
+html.yfm-hide-endscreen .ytp-endscreen-content,
+html.yfm-hide-endscreen .ytp-ce-element {
+  display: none !important;
+}

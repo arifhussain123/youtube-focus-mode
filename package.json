@@ -1,0 +1,27 @@
+{
+  "name": "youtube-focus-mode",
+  "version": "1.0.0",
+  "description": "A Manifest V3 browser extension that hides YouTube distractions (recommendations, homepage feed, Shorts, comments, end-screen suggestions).",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --watch --mode development",
+    "backend": "python scripts/auto_start.py",
+    "backend:prod": "python scripts/auto_start.py --prod"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.24.0",
+    "babel-loader": "^9.1.3",
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^6.10.0",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

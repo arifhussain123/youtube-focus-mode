@@ -55,6 +55,18 @@ The build produces `dist/` containing `manifest.json`, `content.js`, `content.cs
 
 The backend is a FastAPI app with SQLAlchemy over SQLite (`backend/focus.db`, created on first run). Hiding distractions works without it; it's only needed for the Stats tab.
 
+**One-click start** (auto-creates the venv, installs deps, loads `.env`, opens the docs, restarts on crash):
+
+```bash
+scripts\start.bat            # Windows (double-click or run in a terminal)
+./scripts/start.sh           # Linux / macOS
+npm run backend              # any OS, via npm
+```
+
+Add `--prod` (e.g. `scripts\start.bat --prod` or `npm run backend:prod`) for production mode — uvicorn workers, no hot reload, no auto-browser. Other flags: `--port`, `--host`, `--no-browser`, `--no-restart`, `--reinstall` (see `python scripts/auto_start.py --help`).
+
+<details><summary>Manual start (equivalent steps)</summary>
+
 ```bash
 cd backend
 py -m venv .venv
@@ -62,8 +74,9 @@ py -m venv .venv
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 ```
+</details>
 
-Then visit `http://localhost:8000/docs` for the Swagger UI. Endpoints:
+Either way, visit `http://localhost:8000/docs` for the Swagger UI. Endpoints:
 
 - `GET  /` — welcome / endpoint index
 - `GET  /health`
